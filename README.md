@@ -1,6 +1,6 @@
-# QVina-GPU
+# QuickVina 2-GPU
 
-QVina-GPU is proposed to parallelize the efficient QVina2 docking software, which can exploit the highly-parallel hardware architecture to speed up the process of molecule docking.
+QuickVina 2-GPU is proposed to parallelize the efficient QVina2 docking software, which can exploit the highly-parallel hardware architecture to speed up the process of molecule docking.
 
 ## Compiling and Running 
 
@@ -10,7 +10,7 @@ QVina-GPU is proposed to parallelize the efficient QVina2 docking software, whic
 
 **Run on the executable file**
 
-1. For the first time to use QVina-GPU, please run `QVina-GPU-K.exe` with command `./Qvina_GPU_K.exe --config ./input_file_example/2bm2_config.txt`
+1. For the first time to use QuickVina 2-GPU, please run `QVina-GPU-K.exe` with command `./Qvina_GPU_K.exe --config ./input_file_example/2bm2_config.txt`
    You are supposed to have the docking results `2bm2_out.pdbqt` of our example complex and a `Kernel2_Opt.bin` file
 2. Once you have the `Kernel2_Opt.bin` file, you can run Qvina2_GPU.exe` without compiling the kernel files (thus to save more runtime)
 
@@ -56,12 +56,12 @@ Note: ensure the line ending are CLRF
 
 4. set GPU platform `GPU_PLATFORM` and OpenCL version `OPENCL_VERSION`in `Makefile`. some options are given below:
 
-   **Note**: -DOPENCL_3_0 is highly recommended in Linux. To check the OpenCL version on a given platform, use `clinfo`.
+   **Note**: -DOPENCL_3_0 is highly recommended in Linux, please avoid using -OPENCL_1_2 in the Makefile setting. To check the OpenCL version on a given platform, use `clinfo`.
 
 |Macros|Options|Descriptions|
 |--|--|--|	
 |GPU_PLATFORM|-DNVIDIA_PLATFORM / -DAMD_PLATFORM|NVIDIA / AMD GPU platform
-|  OPENCL_VERSION | -DOPENCL_3_0 / -DOPENCL_1_2|OpenCL version 3.0 / 1.2
+|  OPENCL_VERSION | -DOPENCL_3_0 / -DOPENCL_2_0|OpenCL version 3.0 / 2.0
 
 6. type `make clean` and `make source` to build Vina-GPU that compile the kernel files on the fly (this would take some time at the first use)
 7. after a successful compiling, `Vina-GPU` can be seen in the directory 
